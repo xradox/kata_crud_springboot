@@ -3,18 +3,20 @@ package web.kata_crud_boot;
 
 import org.springframework.stereotype.Component;
 import web.kata_crud_boot.models.User;
-import web.kata_crud_boot.services.UserService;
+import web.kata_crud_boot.services.UserServiceImpl;
+
+import javax.annotation.PostConstruct;
 
 @Component
 public class DbRecordsInit {
 
-    private UserService service;
+    private final UserServiceImpl service;
 
-    public DbRecordsInit(UserService service) {
+    public DbRecordsInit(UserServiceImpl service) {
         this.service = service;
-        addDataToDb();
     }
 
+    @PostConstruct
     public void addDataToDb() {
         for (int i = 0; i < 5; i++) {
             service.saveUser(new User("Name" + i, "Lastname" + i, 1999 + i));

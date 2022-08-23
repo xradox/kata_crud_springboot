@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.kata_crud_boot.models.User;
-import web.kata_crud_boot.services.UserService;
+import web.kata_crud_boot.services.UserServiceImpl;
 
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService service;
+    private final UserServiceImpl service;
 
-    public UserController(UserService service) {
+    public UserController(UserServiceImpl service) {
         this.service = service;
     }
 
